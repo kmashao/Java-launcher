@@ -7,7 +7,7 @@ class Baloon extends Aircraft {
 	private WeatherTower weatherTower;
 
 	Baloon(String name, Coordinates coordinates){
-		
+		super(name_, coordinates_);
 	}
 
 	public void updateConditions() {

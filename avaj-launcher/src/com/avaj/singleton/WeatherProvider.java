@@ -1,22 +1,25 @@
 package com.avaj.singleton;
 
 import com.avaj.aircrafts.*;
+import java.math.*;
 
-class WeatherProvider {
+public class WeatherProvider {
 
 	static private WeatherProvider weatherProvider;
-	static String[] weather = { "RAIN", "FOG", "SUN", "SNOW" };
+	static private String[] weather = { "RAIN", "FOG", "SUN", "SNOW" };
 
-	WeatherProvider() {
-		return;
+	private WeatherProvider() {
 	}
 
-	static WeatherProvider getProvider() {
-		return weatherProvider;
+	static public WeatherProvider getProvider() {
+		return WeatherProvider.weatherProvider;
 	}
 
-	String getCurrentWeather(Coordinates coordinates) {
+	public String getCurrentWeather(Coordinates coordinates) {
 
+		int seed = coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude();
+		String weather_ = weather[seed % 4];
+		return (weather_);
 	}
 
 }
