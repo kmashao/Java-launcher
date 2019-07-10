@@ -1,6 +1,6 @@
 package com.avaj.aircrafts;
 
-class Coordinates {
+public class Coordinates {
 
 	private int height;
 	private int longitude;

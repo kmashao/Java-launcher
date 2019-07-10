@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import com.avaj.towers.*;
 
-class Helicopter extends Aircraft {
+public class Helicopter extends Aircraft {
 
 	private WeatherTower weatherTower;
 
@@ -13,31 +13,39 @@ class Helicopter extends Aircraft {
 		super(name, coordinates);
 	}
 
-	public void updateConditions(){
+	public void updateConditions() {
 
 		String weather = weatherTower.getWeather(coordinates);
-		HashMap<String, String> conditions = new Hashmap<String, String>(){{
-			
-			put("RAIN","It's raining. Finna get wet");
-			put("FOG","Can't see shit.");
-			put("SNOW","It's darn cold my finger broke off.");
-			put("SUN","Ahhhh some nice sunshine.");
-		}};
+		HashMap<String, String> conditions = new Hashmap<String, String>() {
+			{
 
-		if (weather.equals("SUN")){
-			this.coordinates = new Coordinates(coordinates.getLongitude() + 10,
-												coordinates.getLatitude() + 0,
-												coordinates.getHeight() + 2
-				
+				put("RAIN", "It's raining. Finna get wet");
+				put("FOG", "Can't see shit.");
+				put("SNOW", "It's darn cold my finger broke off.");
+				put("SUN", "Ahhhh some nice sunshine.");
+			}
+		};
+
+		if (weather.equals("SUN")) {
+			this.coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude() + 0,
+					coordinates.getHeight() + 2
+
 			);
-		}
-		else if (weather.equals("RAIN")){
-			this.coordinates = new Coordinates(coordinates.getLongitude() + 1,
-												coordinates.getLatitude() + 0,
-												coordinates.getHeight() + 0)
-		}
+		} else if (weather.equals("RAIN")) {
 
-		
+			this.coordinates = new Coordinates(coordinates.getLongitude() + 5, coordinates.getLatitude() + 0,
+					coordinates.getHeight() + 0);
+
+		} else if (weather.equals("SNOW")) {
+
+			this.coordinates = new Coordinates(coordinates.getLongitude() + 0, coordinates.getLatitude() + 0,
+					coordinates.getHeight() - 12);
+
+		} else if (weather.equals("FOG")) {
+
+			this.coordinates = new Coordinates(coordinates.getLongitude() + 1, coordinates.getLatitude() + 0,
+					coordinates.getHeight() + 0);
+		}
 	}
 
 	public void registerTower(WeatherTower weatherTower) {
