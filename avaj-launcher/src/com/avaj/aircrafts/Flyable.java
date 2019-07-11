@@ -1,4 +1,6 @@
+package com.avaj.aircrafts;
 
+import com.avaj.towers.WeatherTower;
 
 interface Flyable{
 	

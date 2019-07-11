@@ -1,6 +1,7 @@
 package com.avaj.aircrafts;
 
 import com.avaj.towers.WeatherTower;
+import com.avaj.towers.Tower;
 
 class Baloon extends Aircraft {
 
@@ -13,7 +14,7 @@ class Baloon extends Aircraft {
 	public void updateConditions() {
 
 		String weather = weatherTower.getWeather(coordinates);
-		HashMap<String, String> conditions = new Hashmap<String, String>() {
+		HashMap<String, String> messages = new Hashmap<String, String>() {
 			{
 
 				put("RAIN", "Damn you rain! You messed up my baloon.");
@@ -49,7 +50,9 @@ class Baloon extends Aircraft {
 	public void registerTower(WeatherTower weatherTower) {
 
 		this.weatherTower = weatherTower;
-
+		this.weatherTower.registerTower(this);
+		Simulator.writer
+				.println("Tower says: Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
 	}
 
 }

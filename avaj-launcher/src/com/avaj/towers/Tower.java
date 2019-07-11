@@ -1,7 +1,6 @@
 package com.avaj.towers;
 
 import java.util.ArrayList;
-
 import com.avaj.Flyable;
 import java.util.List;
 
@@ -22,6 +21,9 @@ abstract class Tower implements Flyable {
 
 	protected void conditionsChanged() {
 
+		for (int i = 0; i < observers.length(); i++)
+			 observers.get(i).updateConditions();
+		
 	}
 
 }

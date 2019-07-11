@@ -1,7 +1,6 @@
 package com.avaj.singleton;
 
 import com.avaj.aircrafts.*;
-import java.math.*;
 
 public class WeatherProvider {
 

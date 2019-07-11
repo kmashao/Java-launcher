@@ -16,7 +16,7 @@ public class Helicopter extends Aircraft {
 	public void updateConditions() {
 
 		String weather = weatherTower.getWeather(coordinates);
-		HashMap<String, String> conditions = new Hashmap<String, String>() {
+		HashMap<String, String> messages = new Hashmap<String, String>() {
 			{
 
 				put("RAIN", "It's raining. Finna get wet");
@@ -49,7 +49,10 @@ public class Helicopter extends Aircraft {
 	}
 
 	public void registerTower(WeatherTower weatherTower) {
-
+		this.weatherTower = weatherTower;
+		this.weatherTower.registerTower(this);
+		Simulator.writer
+				.println("Tower says: Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
 	}
 
 }
