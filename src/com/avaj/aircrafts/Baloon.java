@@ -1,10 +1,11 @@
 package com.avaj.aircrafts;
 
-import com.avaj.towers.WeatherTower; 
+import com.avaj.towers.WeatherTower;
+import com.avaj.aircrafts.Coordinates;
 import com.avaj.Simulator;
 import java.util.HashMap;
 
-class Baloon extends Aircraft implements Flyable {
+public class Baloon extends Aircraft implements Flyable {
 
 	private WeatherTower weatherTower;
 
@@ -24,9 +25,7 @@ class Baloon extends Aircraft implements Flyable {
 
 		if (weather.equals("SUN")) {
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude() + 0,
-					coordinates.getHeight() + 2
-
-			);
+					coordinates.getHeight() + 2);
 		} else if (weather.equals("RAIN")) {
 
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 5, coordinates.getLatitude() + 0,

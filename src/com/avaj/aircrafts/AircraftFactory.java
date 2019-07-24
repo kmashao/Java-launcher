@@ -2,9 +2,9 @@ package com.avaj.aircrafts;
 
 import com.avaj.aircrafts.Coordinates;
 
-public class AircraftFactory {
+public abstract class AircraftFactory {
 
-	static public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
+	public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
 
 	Coordinates coordinates = new Coordinates(longitude, latitude, height);
 

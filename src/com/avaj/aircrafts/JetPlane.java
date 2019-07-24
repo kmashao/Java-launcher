@@ -1,5 +1,6 @@
 package com.avaj.aircrafts;
 
+import com.avaj.aircrafts.Coordinates;
 import com.avaj.towers.WeatherTower;
 import java.util.HashMap;
 import com.avaj.Simulator;
@@ -43,10 +44,10 @@ public class JetPlane extends Aircraft implements Flyable {
 					coordinates.getHeight() + 0);
 		}
 		if (this.coordinates.getHeight() < 1)
-			Simulator.writer.println("Baloon#" + this.name + "(" + this.id + ")" + " landing.");
+			Simulator.writer.println("JetPlane#" + this.name + "(" + this.id + ")" + " landing.");
 		this.weatherTower.unregister(this);
 		Simulator.writer
-				.println("Tower says: Baloon#" + this.name + "(" + this.id + ")" + " unregistered from weather tower.");
+				.println("Tower says: JetPlane#" + this.name + "(" + this.id + ")" + " unregistered from weather tower.");
 
 	}
 

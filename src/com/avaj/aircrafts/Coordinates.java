@@ -6,7 +6,7 @@ public class Coordinates {
 	private int longitude;
 	private int latitude;
 
-	Coordinates(int longitude_, int latitude_, int height_) {
+	public Coordinates(int longitude_, int latitude_, int height_) {
 		
 		if (longitude_ < 1)
 			this.longitude = 0;
@@ -20,14 +20,14 @@ public class Coordinates {
 	}
 
 	public int getLatitude() {
-		return latitude;
+		return this.latitude;
 	}
 
 	public int getLongitude() {
-		return longitude;
+		return this.longitude;
 	}
 
 	public int getHeight() {
-		return height;
+		return this.height;
 	}
 }

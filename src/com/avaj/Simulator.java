@@ -1,10 +1,6 @@
 package com.avaj;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 
 import com.avaj.aircrafts.AircraftFactory;
 import com.avaj.singleton.WeatherProvider;
@@ -17,7 +13,7 @@ public class Simulator{
 	public static int cycles;
 	public static PrintWriter writer;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
 		if (args.length < 1)
 			return;
@@ -27,14 +23,14 @@ public class Simulator{
 
 		try {
 			writer = new PrintWriter(simulationLog);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("Error" + e.getMessage());
 			return;
 		}
 		if (simulationLog.exists() && !simulationLog.isDirectory())
 			writer.println("");
 		
-		AircraftFactory factory = new AircraftFactory();
+		AircraftFactory factory = new AircraftFactory(){};
 		WeatherTower tower = new WeatherTower();
 
 		try{
@@ -75,16 +71,16 @@ public class Simulator{
 						Integer.parseInt(splitStr[4])
 						).registerTower(tower);
 					} catch (NumberFormatException e) {
-						System.out.println("Parameters 3 - 5 must be integeres");
+						System.out.println("Error on line "+ lineNum +"Parameters 3 - 5 must be integeres");
 						return;
 					} catch (Exception ex) {
 						System.out.println("Error: " + ex.getMessage());
+						return;
 					}
 				}
-			
+				System.out.println(line);
 				lineNum++;
 			}
-
 			bRead.close();
 			      
 		}catch (Exception e){
@@ -98,7 +94,7 @@ public class Simulator{
 			tower.changeWeather();
 			cycles--;
 		}
-
+		writer.flush();
 		writer.close();
 	}
 

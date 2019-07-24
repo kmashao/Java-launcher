@@ -2,7 +2,8 @@ package com.avaj.aircrafts;
 
 import com.avaj.Simulator;
 import java.util.HashMap;
-import com.avaj.towers.WeatherTower;;
+import com.avaj.towers.WeatherTower;
+import com.avaj.aircrafts.Coordinates;
 
 public class Helicopter extends Aircraft implements Flyable{
 
