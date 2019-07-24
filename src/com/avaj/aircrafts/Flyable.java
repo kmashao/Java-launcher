@@ -1,9 +1,9 @@
 package com.avaj.aircrafts;
 
-import com.avaj.towers.WeatherTower;
+import com.avaj.towers.*;
 
 public interface Flyable{
 	
 	public void updateConditions();
-	public void registerTower(WeatherTower weatherTower);
+	public void registerTower(WeatherTower WeatherTower);
 }

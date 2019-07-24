@@ -2,12 +2,12 @@ package com.avaj.aircrafts;
 
 import com.avaj.aircrafts.Coordinates;
 
-public abstract class Aircraft {
+abstract class Aircraft {
 
 	protected long id;
 	protected String name;
 	protected Coordinates coordinates;
-	private static long idCounter = 1;
+	static private long idCounter = 1;
 
 	protected Aircraft(String name_, Coordinates coordinates_) {
 		this.name = name_;
@@ -16,6 +16,6 @@ public abstract class Aircraft {
 	}
 
 	private long nextId() {
-		return (Aircraft.idCounter)++;
+		return (idCounter++);
 	}
 }

@@ -1,11 +1,12 @@
 package com.avaj.aircrafts;
 
-import com.avaj.Simulator;
+import com.avaj.simulation.Simulator;
 import java.util.HashMap;
-import com.avaj.towers.WeatherTower;
+import com.avaj.towers.*;
+import com.avaj.aircrafts.Flyable;
 import com.avaj.aircrafts.Coordinates;
 
-public class Helicopter extends Aircraft implements Flyable{
+public class Helicopter extends Aircraft implements Flyable {
 
 	private WeatherTower weatherTower;
 
@@ -14,10 +15,10 @@ public class Helicopter extends Aircraft implements Flyable{
 		super(name, coordinates);
 	}
 
-	public void updateConditions(){
+	public void updateConditions() {
 
 		String weather = weatherTower.getWeather(coordinates);
-		HashMap<String, String> messages = new HashMap<String,String>();
+		HashMap<String, String> messages = new HashMap<String, String>();
 
 		messages.put("RAIN", "It's raining. Finna get wet");
 		messages.put("FOG", "Can't see shit.");
@@ -39,18 +40,18 @@ public class Helicopter extends Aircraft implements Flyable{
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 0, coordinates.getLatitude() + 0,
 					coordinates.getHeight() - 12);
 
-		} 
-		else if (weather.equals("FOG")) {
-			
+		} else if (weather.equals("FOG")) {
+
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 1, coordinates.getLatitude() + 0,
-				coordinates.getHeight() + 0);
+					coordinates.getHeight() + 0);
 		}
 		Simulator.writer.println("Helicopter#" + this.name + "(" + this.id + "): " + messages.get(weather));
-		if (this.coordinates.getHeight() == 0){
+		if (this.coordinates.getHeight() == 0) {
 
 			Simulator.writer.println("Helicopter#" + this.name + "(" + this.id + "): landing.");
 			this.weatherTower.unregister(this);
-			Simulator.writer.println("Tower says: Helicopter#" + this.name + "(" + this.id + ") " + "unregistered from weather tower");
+			Simulator.writer.println(
+					"Tower says: Helicopter#" + this.name + "(" + this.id + ") " + "unregistered from weather tower");
 		}
 	}
 

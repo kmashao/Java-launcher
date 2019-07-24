@@ -2,10 +2,11 @@ package com.avaj.aircrafts;
 
 import com.avaj.towers.WeatherTower;
 import com.avaj.aircrafts.Coordinates;
-import com.avaj.Simulator;
+import com.avaj.simulation.Simulator;
+import com.avaj.aircrafts.Flyable;
 import java.util.HashMap;
 
-public class Baloon extends Aircraft implements Flyable {
+class Baloon extends Aircraft implements Flyable {
 
 	private WeatherTower weatherTower;
 
@@ -16,7 +17,7 @@ public class Baloon extends Aircraft implements Flyable {
 	public void updateConditions() {
 
 		String weather = weatherTower.getWeather(coordinates);
-		HashMap<String, String> messages = new HashMap<String,String>();
+		HashMap<String, String> messages = new HashMap<String, String>();
 
 		messages.put("RAIN", "Damn you rain! You messed up my baloon.");
 		messages.put("FOG", "I cant see jackshit.");
@@ -25,7 +26,9 @@ public class Baloon extends Aircraft implements Flyable {
 
 		if (weather.equals("SUN")) {
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude() + 0,
-					coordinates.getHeight() + 2);
+					coordinates.getHeight() + 2
+
+			);
 		} else if (weather.equals("RAIN")) {
 
 			this.coordinates = new Coordinates(coordinates.getLongitude() + 5, coordinates.getLatitude() + 0,
@@ -43,11 +46,12 @@ public class Baloon extends Aircraft implements Flyable {
 		}
 
 		Simulator.writer.println("Baloon#" + this.name + "(" + this.id + "): " + messages.get(weather));
-		if (this.coordinates.getHeight() == 0){
+		if (this.coordinates.getHeight() == 0) {
 
 			Simulator.writer.println("Baloon#" + this.name + "(" + this.id + "): landing.");
 			this.weatherTower.unregister(this);
-			Simulator.writer.println("Tower says: Baloon#" + this.name + "(" + this.id + ") " + "unregistered from weather tower");
+			Simulator.writer.println(
+					"Tower says: Baloon#" + this.name + "(" + this.id + ") " + "unregistered from weather tower");
 		}
 
 	}

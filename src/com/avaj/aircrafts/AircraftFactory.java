@@ -1,8 +1,9 @@
 package com.avaj.aircrafts;
 
 import com.avaj.aircrafts.Coordinates;
+import com.avaj.aircrafts.Flyable;
 
-public abstract class AircraftFactory {
+public class AircraftFactory {
 
 	public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
 
